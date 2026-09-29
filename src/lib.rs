@@ -337,7 +337,7 @@ pub use state_snapshot::{
 pub use prize_distributor::{
     initialize_prize_distributor, fund_prize_pool, submit_leaderboard_snapshot,
     distribute_weekly_prizes, get_prize_pool, get_total_distributed, get_last_reset,
-    PrizeError, PrizeRecord, WEEK_SECONDS, MAX_PAYOUT_POSITIONS,
+    PrizeError, PrizeRecord, WEEK_SECONDS, MAX_PAYOUT_POSITIONS,};
 pub use alliance_manager::{
     contribute_to_treasury, found_alliance, get_alliance, get_alliance_treasury,
     get_member_contribution, get_player_alliance, join_alliance, leave_alliance, Alliance,
@@ -3763,3 +3763,12 @@ impl NebulaNomadContract {
         reputation::claim_reputation_reward(&env, &player)
     }
 }
+
+// Game Systems Modules (Issues #528-531)
+pub mod seasons;
+pub mod event_scheduler;
+pub mod clan_wars;
+pub mod alliance_manager;
+pub mod privacy_stats;
+pub mod crafting;
+pub mod recipes;
