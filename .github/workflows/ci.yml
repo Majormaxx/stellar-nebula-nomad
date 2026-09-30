@@ -175,13 +175,15 @@ jobs:
           name: contract-wasm
           path: wasm/
 
-      - name: Install Soroban CLI
-        run: cargo install soroban-cli --locked
+      - name: Install Stellar CLI
+        run: |
+          curl -fsSL https://github.com/stellar/stellar-cli/raw/main/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
       - name: Optimize WASM
         run: |
           for f in wasm/*.wasm; do
-            soroban contract optimize --wasm "$f" --wasm-out "${f%.wasm}.optimized.wasm"
+            stellar contract optimize --wasm "$f" --wasm-out "${f%.wasm}.optimized.wasm"
           done
 
       - name: Check contract size (≤ 64 KB)
