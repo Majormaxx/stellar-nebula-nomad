@@ -24,7 +24,7 @@ done
 ARTIFACTS_DIR="deployment/artifacts/${NETWORK}"
 DEPLOY_LOG=".deploy-${NETWORK}.log"
 
-command -v soroban >/dev/null 2>&1 || {
+command -v stellar >/dev/null 2>&1 || {
     echo "soroban CLI not found."
     exit 1
 }
@@ -57,7 +57,7 @@ if [ -z "$WASM_FILE" ]; then
 fi
 
 echo "==> Deploying rollback WASM: $WASM_FILE"
-CONTRACT_ID=$(soroban contract deploy \
+CONTRACT_ID=$(stellar contract deploy \
     --wasm "$WASM_FILE" \
     --source-account "$IDENTITY" \
     --network "$NETWORK" 2>/dev/null)

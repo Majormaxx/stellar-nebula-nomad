@@ -12,7 +12,7 @@ NETWORK="${1:?Usage: $0 <network> <contract_id> [identity]}"
 CONTRACT_ID="${2:?Usage: $0 <network> <contract_id> [identity]}"
 IDENTITY="${3:-default}"
 
-command -v soroban >/dev/null 2>&1 || {
+command -v stellar >/dev/null 2>&1 || {
     echo "soroban CLI not found."
     exit 1
 }
@@ -20,7 +20,7 @@ command -v soroban >/dev/null 2>&1 || {
 echo "==> Verifying contract $CONTRACT_ID on $NETWORK"
 
 invoke() {
-    soroban contract invoke \
+    stellar contract invoke \
         --id "$CONTRACT_ID" \
         --source-account "$IDENTITY" \
         --network "$NETWORK" \
