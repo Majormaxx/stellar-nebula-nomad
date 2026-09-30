@@ -25,7 +25,7 @@ ARTIFACTS_DIR="deployment/artifacts/${NETWORK}"
 DEPLOY_LOG=".deploy-${NETWORK}.log"
 
 command -v stellar >/dev/null 2>&1 || {
-    echo "soroban CLI not found."
+    echo "stellar CLI not found. Install with: cargo install --locked stellar-cli"
     exit 1
 }
 

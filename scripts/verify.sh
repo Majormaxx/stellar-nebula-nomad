@@ -13,7 +13,7 @@ CONTRACT_ID="${2:?Usage: $0 <network> <contract_id> [identity]}"
 IDENTITY="${3:-default}"
 
 command -v stellar >/dev/null 2>&1 || {
-    echo "soroban CLI not found."
+    echo "stellar CLI not found. Install with: cargo install --locked stellar-cli"
     exit 1
 }
 
