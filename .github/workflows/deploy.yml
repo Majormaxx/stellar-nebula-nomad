@@ -82,12 +82,12 @@ jobs:
       - name: Configure Soroban network
         run: |
           if [ "$SOROBAN_NETWORK" = "futurenet" ]; then
-            soroban network add \
+            stellar network add \
               --rpc-url https://rpc-futurenet.stellar.org \
               --network-passphrase "Test SDF Future Network ; October 2024" \
               futurenet
           else
-            soroban network add \
+            stellar network add \
               --rpc-url https://soroban-testnet.stellar.org \
               --network-passphrase "Test SDF Network ; September 2015" \
               testnet
@@ -96,7 +96,7 @@ jobs:
       - name: Import deployer identity
         run: |
           echo "${{ secrets.DEPLOYER_SECRET_KEY }}" | \
-            soroban keys add deployer --secret-key
+            stellar keys add deployer --secret-key
 
       - name: Deploy contract
         id: deploy
