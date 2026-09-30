@@ -101,7 +101,7 @@ jobs:
       - name: Deploy contract
         id: deploy
         run: |
-          CONTRACT_ID=$(soroban contract deploy \
+          CONTRACT_ID=$(stellar contract deploy \
             --wasm optimized.wasm \
             --source deployer \
             --network "$SOROBAN_NETWORK")
@@ -110,7 +110,7 @@ jobs:
 
       - name: Initialize contract
         run: |
-          soroban contract invoke \
+          stellar contract invoke \
             --id "${{ steps.deploy.outputs.contract-id }}" \
             --source deployer \
             --network "$SOROBAN_NETWORK" \
@@ -118,7 +118,7 @@ jobs:
 
       - name: Smoke test — scan_nebula
         run: |
-          RESULT=$(soroban contract invoke \
+          RESULT=$(stellar contract invoke \
             --id "${{ steps.deploy.outputs.contract-id }}" \
             --source deployer \
             --network "$SOROBAN_NETWORK" \
